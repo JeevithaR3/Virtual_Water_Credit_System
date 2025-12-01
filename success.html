@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Successful</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+        .container {
+            max-width: 500px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        button {
+            padding: 10px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display: block;
+            width: 100%;
+        }
+        .print-btn {
+            background-color: #007bff;
+            color: white;
+        }
+        a {
+            display: block;
+            margin-top: 15px;
+            color: #007bff;
+            text-decoration: none;
+        }
+        #receipt {
+            text-align: left;
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            display: none;
+            background: white;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>🎉 Order Successful!</h2>
+        <p>Thank you for your purchase. Your water will be delivered soon!</p>
+
+        <!-- Receipt Section -->
+        <div id="receipt">
+            <h3>Order Receipt</h3>
+            <p><strong>Order ID:</strong> <span id="orderId"></span></p>
+            <p><strong>Payment Method:</strong> <span id="paymentMethod"></span></p>
+            <p><strong>Items Ordered:</strong></p>
+            <ul id="orderItems"></ul>
+            <p><strong>Total Price:</strong> ₹<span id="totalPrice"></span></p>
+        </div>
+
+        <button class="print-btn" onclick="printReceipt()">Print Receipt</button>
+        <a href="buy.html">Return to Listings</a>
+    </div>
+
+    <script>
+        // Load order details from localStorage (assuming order data is stored)
+        const orderData = JSON.parse(localStorage.getItem("cart")) || [];
+        const paymentMethod = localStorage.getItem("paymentMethod") || "N/A";
+
+        // Generate a random order ID
+        document.getElementById("orderId").innerText = "ORD" + Math.floor(Math.random() * 1000000);
+        document.getElementById("paymentMethod").innerText = paymentMethod;
+
+        // Display order items
+        const orderList = document.getElementById("orderItems");
+        let totalPrice = 0;
+        orderData.forEach(item => {
+            let li = document.createElement("li");
+            li.innerText = `${item.sellerName} - ${item.quantity}L @ ₹${item.price}`;
+            totalPrice += item.price;
+            orderList.appendChild(li);
+        });
+
+        document.getElementById("totalPrice").innerText = totalPrice;
+
+        // Show receipt and enable printing
+        function printReceipt() {
+            document.getElementById("receipt").style.display = "block";
+            window.print();
+        }
+
+        // Clear cart after order confirmation
+        localStorage.removeItem("cart");
+        localStorage.removeItem("paymentMethod");
+    </script>
+
+</body>
+</html>

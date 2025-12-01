@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Payment</title>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+</head>
+<body>
+    <h2>Virtual Water Payment</h2>
+    <label for="amount">Enter Amount (₹): </label>
+    <input type="number" id="amount" placeholder="Enter amount">
+    <button onclick="startPayment()">Pay Now</button>
+
+    <script>
+        async function startPayment() {
+            const amount = document.getElementById("amount").value;
+
+            if (!amount || amount <= 0) {
+                alert("Please enter a valid amount!");
+                return;
+            }
+
+            try {
+                // 🔹 Send request to backend to create an order
+                const response = await fetch("http://localhost:5500/api/payment/order", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ amount: amount })
+                });
+
+                const data = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(data.error || "Failed to create order.");
+                }
+
+                // 🔹 Open Razorpay payment window
+                const options = {
+                    key: "rzp_test_GIJIsabAbLDsvo",  // Replace with your Razorpay Key ID
+                    amount: data.amount,
+                    currency: "INR",
+                    order_id: data.id,
+                    name: "Virtual Water Trading",
+                    description: "Purchase Water Credits",
+                    handler: async function (response) {
+                        alert("Payment Successful! Payment ID: " + response.razorpay_payment_id);
+                        
+                        // 🔹 Verify payment on backend
+                        const verifyResponse = await fetch("http://localhost:5500/api/payment/verify", {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json"
+                            },
+                            body: JSON.stringify(response)
+                        });
+
+                        const verifyData = await verifyResponse.json();
+                        alert(verifyData.message);
+                    },
+                    prefill: {
+                        name: "Customer Name",
+                        email: "customer@example.com",
+                        contact: "9999999999"
+                    }
+                };
+
+                const rzp = new Razorpay(options);
+                rzp.open();
+            } catch (error) {
+                console.error("Payment Error:", error);
+                alert("Payment failed: " + error.message);
+            }
+        }
+    </script>
+</body>
+</html>

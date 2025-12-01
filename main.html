@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Water Trading</title>
+    <style>
+        /* Global Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f8fb;
+    color: #333;
+}
+
+/* Scrolling Alert Message */
+.scrolling-container {
+    width: 100%;
+    background: #004466;
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.scrolling-content {
+    display: inline-block;
+    animation: scrollText 15s linear infinite;
+}
+
+@keyframes scrollText {
+    from { transform: translateX(100%); }
+    to { transform: translateX(-100%); }
+}
+
+/* Navigation Bar */
+/* Logo Styling */
+/* Navigation Bar */
+nav {
+    background: white;
+    padding: 15px 8%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Flex container for logo and navigation items */
+.nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Ensures logo on left, buttons on right */
+}
+
+/* Logo Styling */
+.logo {
+    max-height: 80px; /* Adjust according to your logo size */
+}
+
+/* Navigation Items */
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #004466;
+    font-size:21px;
+    font-weight: bold;
+    padding: 10px 15px;
+    transition: 0.3s ease;
+}
+
+nav ul li a:hover {
+    background: #004466;
+    color: white;
+    border-radius: 5px;
+}
+
+
+
+/* Main Banner Section */
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: url('https://cdn.wallpapersafari.com/45/14/KWf214.jpg') no-repeat center center/cover;
+    height: 75vh;
+    padding: 0 10%;
+    color: white;
+    text-align: left;
+}
+h2 {
+            color: #004466;
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #555;
+            text-align: center;
+            font-size: 16px;
+        }
+
+        /* Button Boxes Container */
+        .button-container {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        /* Individual Button Box */
+        .button-box {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            color:black;
+            text-align: center;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+            transition: 0.3s ease-in-out;
+            width: 260px;
+            height: 150px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .button-box:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 8px 22px rgba(0, 0, 0, 0.18);
+        }
+
+        /* Button Styling */
+        .action-button {
+            background: #004466;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s ease-in-out;
+            width: 100%;
+        }
+
+        .action-button:hover {
+            background: #003355;
+        }
+
+        /* Button Description */
+        .button-description {
+            font-size: 14px;
+            color:black;
+            margin-top: 10px;
+        }
+
+/* Left side - Welcome Text */
+.welcome-text {
+    max-width: 480px;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 25px;
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+}
+
+.welcome-text h1 {
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.welcome-text p {
+    font-size: 18px;
+    margin-top: 10px;
+    color:white;
+} 
+
+/* Right side Image */
+.welcome-image {
+    max-width: 400px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Action Box */
+
+
+/* Footer */
+footer {
+    background: #004466;
+    color: white;
+    padding: 20px;
+    font-size: 16px;
+    text-align: center;
+}
+
+.emergency-contact {
+    font-weight: bold;
+    color: #ffcc00;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .container {
+        flex-direction: column;
+        justify-content: center;
+        height: auto;
+        padding: 5% 0;
+        text-align: center;
+    }
+
+    .welcome-text {
+        max-width: 90%;
+        text-align: center;
+    }
+
+    .welcome-image {
+        margin-top: 20px;
+        max-width: 70%;
+    }
+
+    
+}
+
+        .chatbot-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #007BFF;
+            color: white;
+            font-size: 24px;
+            border: none;
+            border-radius: 50px;
+            width: 60px;
+            height: 60px;
+            cursor: pointer;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease;
+        }
+        .chatbot-button:hover {
+            transform: scale(1.1);
+        }
+        footer {
+            margin-top: 50px;
+        }
+        .footer {
+      background-color:whitesmoke;
+      color: black;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .footer p {
+      margin: 5px 0;
+    }
+
+    .footer i {
+      margin: 0 10px;
+      cursor: pointer;
+    }
+
+    .footer i:hover {
+      color: #ddd;
+    }
+    </style>
+</head>
+<body>
+
+    <!-- Scrolling Alert Message -->
+    <div class="scrolling-container">
+        <div class="scrolling-content">Every drop counts!! Optimize your water usage by trading virtual water rights efficiently.</div>
+    </div>
+
+    <!-- Navigation Bar -->
+    
+    <!-- Navigation Bar -->
+<nav>
+    <div class="nav-container">
+        <img src="water.jpg" alt="Aquashare"class="logo"> <!-- Replace 'logo.png' with your actual logo file -->
+        <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="water.html">Know More!</a></li>
+            <li><a href="user.html">Login</a></li>
+            <li><a href="cart.html">Cart</a></li>
+            <li><a href="coupon.html">Rewards</a></li>
+
+        </ul>
+    </div>
+</nav>
+
+
+    <!-- Canvas background for bubbles -->
+    <div class="container">
+        <canvas id="bubbleCanvas"></canvas>
+
+        <!-- Welcome Message aligned to the left -->
+        <div class="welcome-text">
+            <h1>"Revolutionizing Water Trade for a Sustainable Tomorrow!"</h1>
+            <p>"A smarter way to trade, conserve, and sustain our most precious resource."Your gateway for promoting water conservation and sustainable usage through trading virtual water rights.</p>
+        </div>
+    </div>
+
+    <!-- Action Box -->
+    
+       
+    <div class="button-container">
+        <!-- Buy Water -->
+        <div class="button-box">
+            <button class="action-button" onclick="window.location.href='buy.html'">Buy Water</button>
+            <div class="button-description">Want to purchase virtual water rights and contribute to sustainable usage??Why worry,when Aquahare is all here!!</div>
+        </div>
+
+        <!-- Sell Water -->
+        <div class="button-box">
+            <button class="action-button" onclick="window.location.href='sell.html'">Sell Water</button>
+            <div class="button-description">Sell your unused water rights with income??I got it,your confused right?Get into and contribute to sustainable environment.</div>
+        </div>
+
+       
+        <div class="button-box">
+            <button class="action-button" onclick="window.location.href='price.html'">Latest price</button>
+            <div class="button-description">A dynamic pricing model ensures fair water costs based on supply, seasonality, and past trends.</div>
+        </div>
+
+        <div class="button-box">
+            <button class="action-button" onclick="window.location.href='transport-registration.html'">Delivery registration</button>
+            <div class="button-description">Pick and drop if required</div>
+        </div>
+        <div class="button-box">
+            <button class="action-button" onclick="window.location.href='view-transport.html'">Transport Providers!</button>
+            <div class="button-description">Get tuned into the transport providers!!</div>
+        </div>
+
+        <div class="button-box">
+            <button class="action-button" onclick="window.location.href='transport-dashboard.html'">Bookings!</button>
+            <div class="button-description">Check your bookings in a click!!</div>
+        </div>
+
+
+
+
+    </div>
+    
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="emergency" id="emergency">  
+          <h1>Emergency Helpline Numbers</h1>
+          <h2>Aquashare Authority</h2>
+          <ul>
+            <li>National Helpline: 1947(Toll-Free)</li>
+            <li>
+              Email: aqua@gmail.com
+              (Helpline)
+            </li>
+            <li>Aquashare : 0101</a></li>
+          </ul>
+        </div>
+        
+        <p>© 2025 Aquashare. All rights reserved.</p>
+      </div>
+
+    <!-- Chatbot Floating Button -->
+    <button class="chatbot-button" onclick="toggleChat()">💬</button>
+
+    <!-- Botpress Chatbot Integration -->
+    <script src="https://cdn.botpress.cloud/webchat/v2.2/inject.js"></script>
+    <script src="https://files.bpcontent.cloud/2025/02/23/11/20250223111641-Z3YZNVXP.js"></script>
+
+    <script>
+        window.botpressWebChat.init({
+            "botId": "002469b7-fbed-49c8-a5f3-3cf2e5a2931c",
+            "clientId": "98ccc4e6-8aba-43ea-baa8-323f172e779f",
+            "host": "https://cdn.botpress.cloud",
+            "showCloseButton": true,
+            "theme": "light",
+            "layout": "embedded",
+            "showBotInfo": true
+        });
+
+        function toggleChat() {
+            window.botpressWebChat.sendEvent({ type: "toggle" });
+        }
+
+        // Bubble Animation Logic
+        var canvas = document.getElementById('bubbleCanvas');
+        var ctx = canvas.getContext('2d');
+        var bubbles = [];
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight * 0.75; // Adjust to 75% of the screen height
+
+        function createBubble() {
+            var radius = Math.random() * 20 + 10; // Random size between 10 and 30
+            var x = Math.random() * canvas.width;
+            var y = canvas.height + radius;
+            var speed = Math.random() * 2 + 1; // Random speed between 1 and 3
+            var opacity = Math.random() * 0.5 + 0.2; // Random opacity between 0.2 and 0.7
+
+            bubbles.push({ x: x, y: y, radius: radius, speed: speed, opacity: opacity });
+        }
+
+        function updateBubbles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas
+
+            for (var i = 0; i < bubbles.length; i++) {
+                var bubble = bubbles[i];
+
+                // Draw each bubble
+                ctx.beginPath();
+                ctx.arc(bubble.x, bubble.y, bubble.radius, 0, Math.PI * 2);
+                ctx.fillStyle = "rgba(0, 153, 255, " + bubble.opacity + ")";
+                ctx.fill();
+                ctx.closePath();
+
+                // Move the bubble upwards
+                bubble.y -= bubble.speed;
+
+                // Remove bubbles that go off the screen
+                if (bubble.y + bubble.radius < 0) {
+                    bubbles.splice(i, 1);
+                    i--;
+                }
+            }
+
+            // Randomly create new bubbles
+            if (Math.random() < 0.02) {
+                createBubble();
+            }
+
+            requestAnimationFrame(updateBubbles);
+        }
+
+        updateBubbles();
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Price Prediction</title>
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.23.4/full/pyodide.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 350px;
+            margin: auto;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 15px;
+            background: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #218838;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Water Price Prediction</h2>
+        <input type="number" id="supply" placeholder="Supply (liters)">
+        <input type="number" id="season" placeholder="Season (0-Winter,1-Summer,2-Monsoon)">
+        <input type="number" id="previous_price" placeholder="Previous Price">
+        <input type="number" id="distance" placeholder="Distance (km)">
+        <button onclick="predictPrice()">Predict Price</button>
+        <h3 id="result"></h3>
+    </div>
+
+    <script>
+        async function predictPrice() {
+            let supply = document.getElementById("supply").value;
+            let season = document.getElementById("season").value;
+            let previous_price = document.getElementById("previous_price").value;
+            let distance = document.getElementById("distance").value;
+
+            if (!supply || !season || !previous_price || !distance) {
+                alert("Please fill all fields");
+                return;
+            }
+
+            let pyodide = await loadPyodide();
+
+            let pythonCode = `
+supply = float(${supply})
+season = int(${season})
+previous_price = float(${previous_price})
+distance = float(${distance})
+
+# Basic price prediction formula (modify as needed)
+season_factor = [0.9, 1.2, 1.0]  # Winter, Summer, Monsoon impact on price
+base_price = previous_price * season_factor[season]
+price = base_price - (supply * 0.01) + (distance * 0.5)
+
+round(price, 2)
+            `;
+
+            let result = await pyodide.runPythonAsync(pythonCode);
+            document.getElementById("result").innerText = "Predicted Price: ₹" + parseFloat(result).toFixed(2);
+        }
+    </script>
+
+</body>
+</html>

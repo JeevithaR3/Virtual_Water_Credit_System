@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Cart</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            background-image: url('https://www.dorabaltea.com/wp-content/uploads/2021/05/water_PNG50135-1.webp'); /* Added background image */
+            text-align: center;
+        }
+        .container {
+            max-width: 700px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        .cart-item {
+            border-bottom: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+        button {
+            padding: 10px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display: block;
+            width: 100%;
+        }
+        .remove-btn {
+            background-color: #dc3545;
+            color: white;
+        }
+        .buy-btn {
+            background-color: #007bff;
+            color: white;
+        }
+        .checkout-btn {
+            background-color: #28a745;
+            color: white;
+        }
+        a {
+            display: block;
+            margin-top: 15px;
+            color: #007bff;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Water Cart</h2>
+        <div id="cartItems"></div>
+        <button class="checkout-btn" onclick="proceedToCheckout()">Checkout</button>
+        <a href="buy.html">Back to Listings</a>
+    </div>
+
+    <script>
+        // Load cart data from localStorage
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+        function displayCart() {
+            const cartContainer = document.getElementById("cartItems");
+            cartContainer.innerHTML = "";
+
+            if (cart.length === 0) {
+                cartContainer.innerHTML = "<p>Your cart is empty.</p>";
+                return;
+            }
+
+            cart.forEach((item, index) => {
+                const div = document.createElement("div");
+                div.className = "cart-item";
+                div.innerHTML = `
+                    <p><strong>${item.sellerName}</strong></p>
+                    <p>${item.quantity}L @ ₹${item.price}</p>
+                    <p>Location: ${item.location}</p>
+                    <button class="buy-btn" onclick="buyWater('${item.sellerName}', '${item.quantity}', '${item.price}')">Buy Water</button>
+                    <button class="remove-btn" onclick="removeFromCart(${index})">Remove</button>
+                `;
+                cartContainer.appendChild(div);
+            });
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            localStorage.setItem("cart", JSON.stringify(cart));
+            displayCart();
+        }
+
+        function buyWater(sellerName, quantity, price) {
+            alert(`Buying ${quantity}L from ${sellerName} at ₹${price}`);
+            localStorage.setItem("selectedOrder", JSON.stringify({ sellerName, quantity, price }));
+            window.location.href = "order-confirmation.html"; // Redirect to order confirmation page
+        }
+
+        function proceedToCheckout() {
+            if (cart.length === 0) {
+                alert("Your cart is empty. Add items before proceeding.");
+                return;
+            }
+            localStorage.setItem("cart", JSON.stringify(cart)); // Save cart data
+            window.location.href = "order-confirmation.html"; // Redirect to order confirmation page
+        }
+
+        // Display cart items when the page loads
+        displayCart();
+    </script>
+
+</body>
+</html>

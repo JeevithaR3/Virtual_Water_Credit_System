@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transport Dashboard</title>
+    
+
+    <script defer src="transport-dashboard.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+        h2 {
+            background-color: #007bff;
+            color: white;
+            padding: 15px;
+            margin: 0;
+            font-size: 24px;
+        }
+        #providersList {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .provider-card {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: left;
+            transition: transform 0.2s ease-in-out;
+        }
+        .provider-card:hover {
+            transform: scale(1.03);
+        }
+        .provider-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0;
+        }
+        .provider-card ul li {
+            background: #e9ecef;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        .provider-card button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            margin-right: 5px;
+            border-radius: 5px;
+            font-size: 14px;
+            transition: background-color 0.3s ease-in-out;
+        }
+        .provider-card button:hover {
+            background-color: #0056b3;
+        }
+        .confirm-booking {
+            background-color: #28a745;
+            padding: 12px 18px;
+            font-size: 14px;
+        }
+        .confirm-booking:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <h2>Transport Dashboard</h2>
+    <label for="aadhaar" style="background-color: navy; color: white; padding: 10px; border-radius: 5px; margin-bottom: 50px; margin-top:50px; display: inline-block;">Enter Aadhaar:</label>
+
+
+    <input type="text" id="aadhaar" style="background-color:white; color: black; padding: 10px; border-radius: 5px; margin-bottom: 50px; margin-top:50px; display: inline-block;"">
+    <button onclick="checkBookings()"style="background-color:white; color:black; padding: 10px; border-radius: 5px; margin-bottom: 50px; margin-top:50px; display: inline-block;"">Check Bookings</button>
+    <div id="bookingStatus"</div>
+</body>
+</html>

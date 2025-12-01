@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sell Water</title>
+    <link rel="stylesheet" href="style_sell.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Sell Water</h2>
+        <form id="sellForm">
+            <input type="text" id="sellerName" placeholder="Seller Name" required>
+            <input type="number" id="quantity" placeholder="Quantity (Liters)" required min="1">
+            <input type="number" id="price" placeholder="Price (₹)" required min="0">
+            <input type="text" id="location" placeholder="Location" required>
+            <input type="text" id="contact" placeholder="Contact Number" required pattern="[0-9]{10}">
+            <button type="submit" style="padding: 15px; background-color: navy; color: white; border-radius: 5px; font-size: 16px; border: none; cursor: pointer;">
+                Submit
+            </button>
+            
+        </form>
+       
+    </div>
+
+    <script>
+        document.getElementById("sellForm").addEventListener("submit", async (event) => {
+            event.preventDefault(); // Prevent page reload
+
+            const quantity = Number(document.getElementById("quantity").value);
+            const price = Number(document.getElementById("price").value);
+            const contact = document.getElementById("contact").value;
+
+            // Validate contact number format
+            if (!/^[0-9]{10}$/.test(contact)) {
+                alert("❌ Invalid contact number! Must be 10 digits.");
+                return;
+            }
+
+            const sellerData = {
+                sellerName: document.getElementById("sellerName").value,
+                quantity,
+                price,
+                location: document.getElementById("location").value,
+                contact
+            };
+
+            try {
+                const response = await fetch("http://localhost:5000/api/waterlistings", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(sellerData)
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    alert("✅ Listing added successfully!");
+                    window.location.href = "buy.html"; // Redirect to Buy page
+                } else {
+                    throw new Error(result.error || "Failed to add listing.");
+                }
+            } catch (error) {
+                console.error("❌ Error:", error);
+                alert("❌ Failed to add listing. Try again.");
+            }
+        });
+    </script>
+</body>
+</html>

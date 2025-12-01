@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Water Trading Platform</title>
+    <style>
+        /* General Styling */
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        h2 {
+            color: #004466;
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #555;
+            text-align: center;
+            font-size: 16px;
+        }
+
+        /* Button Boxes Container */
+        .button-container {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        /* Individual Button Box */
+        .button-box {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            color:black;
+            text-align: center;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+            transition: 0.3s ease-in-out;
+            width: 260px;
+            height: 150px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .button-box:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 8px 22px rgba(0, 0, 0, 0.18);
+        }
+
+        /* Button Styling */
+        .action-button {
+            background: #004466;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s ease-in-out;
+            width: 100%;
+        }
+
+        .action-button:hover {
+            background: #003355;
+        }
+
+        /* Button Description */
+        .button-description {
+            font-size: 14px;
+            color: #666;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Welcome to Virtual Water Trading</h2>
+    <p>Join the movement towards sustainable water trading.</p>
+
+    <div class="button-container">
+        <!-- Buy Water -->
+        <div class="button-box">
+            <button class="action-button" onclick="window.location.href='buy.html'">Buy Water</button>
+            <div class="button-description">Want to purchase virtual water rights and contribute to sustainable usage??Why worry,when Aquahare is all here!!</div>
+        </div>
+
+        <!-- Sell Water -->
+        <div class="button-box">
+            <button class="action-button" onclick="window.location.href='sell.html'">Sell Water</button>
+            <div class="button-description">Sell your unused water rights with income??I got it,your confused right?Get into and contribute to sustainable environment.</div>
+        </div>
+
+       
+    </div>
+
+</body>
+</html>

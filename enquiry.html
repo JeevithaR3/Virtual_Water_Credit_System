@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seller Enquiry</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+        .container {
+            max-width: 400px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        button {
+            padding: 10px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display: block;
+            width: 100%;
+        }
+        .call-btn {
+            background-color: #28a745;
+            color: white;
+        }
+        .message-btn {
+            background-color: #007bff;
+            color: white;
+        }
+        a {
+            display: block;
+            margin-top: 15px;
+            color: #333;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Seller Details</h2>
+        <p><strong>Name:</strong> <span id="sellerName"></span></p>
+        <p><strong>Location:</strong> <span id="location"></span></p>
+        <p><strong>Contact:</strong> <span id="contact"></span></p>
+        
+        <button class="call-btn" id="callBtn">Call Seller</button>
+        <button class="message-btn" id="messageBtn">Message Seller</button>
+        
+        <a href="buy.html">Back to Listings</a>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const sellerName = urlParams.get('seller') || "Not Available";
+            const contact = urlParams.get('contact') || "Not Available";
+            const location = urlParams.get('location') || "Not Available";
+
+            // Display seller details
+            document.getElementById('sellerName').innerText = sellerName;
+            document.getElementById('contact').innerText = contact;
+            document.getElementById('location').innerText = location;
+
+            // Handle call and message button actions
+            const callBtn = document.getElementById('callBtn');
+            const messageBtn = document.getElementById('messageBtn');
+
+            if (contact && contact !== "Not Available") {
+                callBtn.onclick = () => { window.location.href = `tel:${contact}`; };
+                messageBtn.onclick = () => { window.location.href = `sms:${contact}`; };
+            } else {
+                callBtn.disabled = true;
+                messageBtn.disabled = true;
+            }
+        });
+    </script>
+</body>
+</html>

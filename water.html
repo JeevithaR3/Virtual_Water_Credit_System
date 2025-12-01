@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Save Water....Save Life</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://www.dorabaltea.com/wp-content/uploads/2021/05/water_PNG50135-1.webp'); /* Added background image */
+            background-size: cover; /* Ensure the image covers the entire viewport */
+            background-position: center; /* Center the image */
+            background-repeat: no-repeat; /* Prevent image from repeating */
+            min-height: 100vh;
+            text-align: center;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: rgba(59, 125, 156, 0.8); /* Steel Blue with opacity */
+            padding: 20px;
+            text-align: center;
+            color: white;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 36px;
+            font-weight: bold;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: rgba(59, 125, 156, 0.8); /* Steel Blue with opacity */
+            text-align: center;
+            padding: 10px;
+            color: white;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 90%;
+            padding: 40px 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            margin-top: 80px; /* Space below header */
+            margin-bottom: 80px; /* Space above footer */
+        }
+
+        h2 {
+            font-size: 32px;
+            color: #00796b; /* Teal Green */
+            margin-bottom: 20px;
+        }
+
+        .content, .second-content {
+            display: flex;
+            align-items: stretch;
+            justify-content: center;
+            text-align: left;
+            max-width: 80%;
+            width: 100%;
+            position: relative;
+        }
+
+        .content img, .second-content img {
+            flex: 1;
+            min-width: 200px;
+            max-width: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .content p, .second-content p {
+            flex: 1;
+            font-size: 18px;
+            color: #333;
+            line-height: 1.6;
+            margin: 0;
+            padding: 10px;
+        }
+
+        .content img:hover, .second-content img:hover {
+            transform: scale(1.05); /* Subtle zoom effect */
+        }
+
+        .content img {
+            margin-right: 15px;
+        }
+
+        .second-content img {
+            margin-left: 15px;
+        }
+
+        /* Centering the container */
+        .wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            width: 100%;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h2 {
+                font-size: 28px;
+            }
+
+            .content, .second-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .content img, .second-content img {
+                margin: 0 auto 15px;
+                max-width: 90%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <h1>Aquashare</h1>
+    </header>
+
+    <!-- Content Section -->
+    <div class="wrapper">
+        <div class="container">
+            <h2>Every drop counts,every life matters!!</h2>
+            <div class="content">
+                <img src="https://boldoutline.in/wp-content/uploads/2019/03/cover-save-water.jpg" alt="Save Water">
+                <p>Water is our most precious resource, essential for life, yet it is rapidly depleting due to overuse and climate change. Conserving water not only helps preserve natural ecosystems but also ensures a sustainable future for agriculture, industry, and communities. Simple actions like fixing leaks, using water-efficient appliances, and practicing mindful consumption can make a significant impact. By valuing and protecting every drop, we can safeguard this vital resource for generations to come. Join the movement—conserve water today for a better tomorrow!</p>
+            </div>
+            <div class="second-content">
+                <p>Water trading systems provide an innovative approach to conservation by allowing individuals, farmers, and industries to trade water rights efficiently. By creating a marketplace for water allocation, these systems encourage responsible usage and incentivize conservation efforts. Users who save water can sell their excess to those in need, promoting fair distribution and sustainable consumption. This model not only helps mitigate water scarcity but also fosters economic and environmental balance. Embracing water trading can ensure that every drop is valued, preserved, and utilized where it is needed most.</p>
+                <img src="https://teamtweaks1-blog.s3.us-east-2.amazonaws.com/blog/wp-content/uploads/2020/12/21101823/trading-water-1.png" alt="Water Trading">
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2025 Virtual Water Trading Platform.All rights reserved. </p>
+    </footer>
+</body>
+</html>

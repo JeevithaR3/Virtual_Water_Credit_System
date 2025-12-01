@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💧 Seller Dashboard - Earn Rewards 🎟️</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: linear-gradient(to right, #d7e1ec, #f8f9fa);
+            padding: 20px;
+            background-image: url('https://www.dorabaltea.com/wp-content/uploads/2021/05/water_PNG50135-1.webp'); /* Added background image */
+        }
+
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+            width: 350px;
+            margin: auto;
+        }
+
+        h2 {
+            color: #007bff;
+            font-size: 22px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        input:focus {
+            border-color: #007bff;
+            outline: none;
+            box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+        }
+
+        .btn {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        .btn-calculate {
+            background: linear-gradient(45deg, #28a745, #1f8d3d);
+        }
+
+        .btn-calculate:hover {
+            background: linear-gradient(45deg, #1f8d3d, #16642a);
+        }
+
+        .score-display {
+            font-size: 18px;
+            font-weight: bold;
+            color: #28a745;
+            margin-top: 10px;
+        }
+
+        .coupon-display {
+            font-size: 20px;
+            font-weight: bold;
+            color: #ff4500;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>💧 Sell Water & Earn Rewards 🎟️</h2>
+        <input type="number" id="quantity" placeholder="💦 Enter Water Quantity (Liters)" min="1">
+        <button id="calculate" class="btn btn-calculate">💰 Check Rewards</button>
+        <div id="scoreDisplay" class="score-display">🏆 Conservation Points: 0</div>
+        <p id="couponDisplay" class="coupon-display"></p>
+    </div>
+
+    <script>
+        let conservationPoints = 0; // Track conservation points
+
+        document.getElementById("calculate").addEventListener("click", () => {
+            let quantity = Number(document.getElementById("quantity").value);
+            if (quantity < 1) {
+                alert("⚠️ Please enter a valid water quantity!");
+                return;
+            }
+
+            let earnedPoints = quantity * 0.25; // 1 liter = 0.25 points
+            conservationPoints += earnedPoints; // Add to total score
+            let couponMessage = "";
+
+            // Generate only ONE coupon if points exceed 100
+            if (conservationPoints >= 100) {
+                let couponCode = generateCoupon();
+                couponMessage = `🎉 Coupon Code: <strong>${couponCode}</strong> 🎟️<br>`;
+                conservationPoints -= 100; // Deduct only 100 points, carry the rest
+            }
+
+            document.getElementById("scoreDisplay").innerText = `🏆 Conservation Points: ${conservationPoints.toFixed(2)}`;
+
+            if (couponMessage !== "") {
+                document.getElementById("couponDisplay").innerHTML = couponMessage;
+                document.getElementById("couponDisplay").style.display = "block";
+            } else {
+                document.getElementById("couponDisplay").style.display = "none";
+            }
+        });
+
+        function generateCoupon() {
+            return Math.random().toString(36).substring(2, 12).toUpperCase(); // Generate 10-digit random coupon
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transport Registration</title>
+    <script defer src="transport-registration.js"></script>
+</head>
+           <style>
+/* Global Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('https://www.dorabaltea.com/wp-content/uploads/2021/05/water_PNG50135-1.webp');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: #fff;
+}
+
+/* Header Styling */
+header {
+    background-color: rgba(59, 125, 156, 0.9);
+    padding: 20px;
+    text-align: center;
+    color: white;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5em;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* Footer Styling */
+footer {
+    background-color: rgba(59, 125, 156, 0.9);
+    color: white;
+    padding: 12px;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    font-size: 1em;
+}
+
+/* Main Content Styling */
+h2 {
+    text-align: center;
+    color: #222;
+    margin-top: 40px;
+    font-size: 2em;
+    font-weight: bold;
+}
+
+/* Registration Box Styling */
+form {
+    max-width: 450px;
+    margin: 50px auto;
+    background: rgba(255, 255, 255, 0.95); /* Slightly opaque background */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2); /* Professional box shadow */
+    backdrop-filter: blur(8px);
+    text-align: center;
+}
+
+/* Form Title */
+form h3 {
+    margin-bottom: 20px;
+    font-size: 1.8em;
+    color: #333;
+    font-weight: bold;
+}
+
+/* Label Styling */
+label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+    color: #333;
+    font-size: 1em;
+    text-align: left;
+}
+
+/* Input Fields */
+input[type="text"], 
+input[type="date"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 2px solid #555;
+    border-radius: 6px;
+    font-size: 16px;
+    color: #222;
+    background-color: #f9f9f9;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Input Focus Effect */
+input[type="text"]:focus, 
+input[type="date"]:focus {
+    border-color: #3b7d9c;
+    box-shadow: 0px 0px 8px rgba(59, 125, 156, 0.6);
+    outline: none;
+}
+
+/* Button Styling */
+button {
+    width: 100%;
+    padding: 14px;
+    background-color: black;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: 2px solid black;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 12px;
+    transition: all 0.3s ease-in-out;
+}
+
+button:hover {
+    background-color: white;
+    color: black;
+}
+
+/* Responsive Layout */
+@media (max-width: 768px) {
+    form {
+        width: 90%;
+        padding: 20px;
+    }
+}
+
+           </style>
+    
+<body>
+    <h2>Register as a Transport Provider</h2>
+    <form id="transportForm">
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" required>
+
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" required>
+
+        <label for="aadhaar">Aadhaar Card Number:</label>
+        <input type="text" id="aadhaar" required>
+
+        <label for="phone">Phone Number:</label>
+        <input type="text" id="phone" required>
+
+        <label for="license">Driving License Number:</label>
+        <input type="text" id="license" required>
+
+        <button type="submit">Register</button>
+    </form>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('https://www.dorabaltea.com/wp-content/uploads/2021/05/water_PNG50135-1.webp');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    color: #fff;
+}
+
+/* Header Styling */
+header {
+    background-color: rgba(59, 125, 156, 0.8);
+    padding: 20px;
+    text-align: center;
+    color: white;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5em;
+}
+
+/* Footer Styling */
+footer {
+    background-color: rgba(59, 125, 156, 0.8);
+    color: white;
+    padding: 10px;
+    text-align: center;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+/* Main Content Styling */
+h2 {
+    text-align: center;
+    color: #333;
+    margin-top: 40px;
+}
+
+form {
+    max-width: 500px;
+    margin: 50px auto;
+    background-color: rgba(255, 255, 255, 0.8); /* Light background for the form */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #555;
+}
+
+/* Darkened Border for Input Fields */
+input[type="text"], input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 2px solid black; /* Dark border color */
+    border-radius: 4px;
+    font-size: 16px;
+    color: black; /* Text color inside the input field */
+}
+
+/* Button Styling (Black text and border) */
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: transparent; /* Remove background color */
+    color: black; /* Text color is black */
+    font-size: 16px;
+    border: 2px solid black; /* Black border */
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: black; /* Hover background color */
+    color: white; /* Text color changes to white on hover */
+}
+
+/* Responsive Layout */
+@media (max-width: 768px) {
+    form {
+        width: 90%;
+    }
+}
+
+/* Error Message Styling */
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 10px;
+}
+    </style>
+</body>
+</html>
